@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { config } from './config';
 
@@ -22,6 +23,7 @@ import { config } from './config';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
+    AngularFireAuthModule,
     AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
