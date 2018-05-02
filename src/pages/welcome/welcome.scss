@@ -1,0 +1,30 @@
+page-welcome {
+    .background-image {
+        background-image: url(../../assets/imgs/welcome-background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        -webkit-filter: blur(7px);
+        -moz-filter: blur(7px);
+        -o-filter: blur(7px);
+        -ms-filter: blur(7px);
+        filter: blur(7px);
+      }
+
+    .content .scroll-content {
+        overflow:hidden;
+    }
+
+    .content {
+        background: transparent;
+    }
+
+    .navigation {
+        margin-top: 30%;
+    }
+
+    .title {
+        margin-top: 30%;
+    }
+}
