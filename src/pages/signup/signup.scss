@@ -1,3 +1,34 @@
 page-signup {
+    ion-navbar .toolbar-background {
+        background: transparent;
+    }
 
+    .background-image {
+        background-image: url(../../assets/imgs/welcome-background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        -webkit-filter: blur(10px);
+        -moz-filter: blur(10px);
+        -o-filter: blur(10px);
+        -ms-filter: blur(10px);
+        filter: blur(10px);
+      }
+
+    .content .scroll-content {
+        overflow:hidden;
+    }
+
+    .content {
+        background: transparent;
+    }
+
+    .navigation {
+        margin-top: 30%;
+    }
+
+    .title {
+        margin-top: 8%;
+    }
 }

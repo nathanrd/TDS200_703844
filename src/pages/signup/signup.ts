@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 /**
  * Generated class for the SignupPage page.
@@ -15,9 +17,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  public user = {
+    email: '',
+    password: ''
+  };
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private af: AngularFirestore, 
+    private toast: ToastController) {
   }
 
+  registerUser() {
+    this.af.app.auth().createUserWithEmailAndPassword(this.user.email, this.user.password)
+      .then(response => {
+        //Runs if user was registered properly.
+        console.log(response);
+      })
+      .catch(error => {
+        //If user wasnt registered
+        this.toast.create({
+          message: error.message,
+          duration: 2000
+        }).present();
+      });
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
   }

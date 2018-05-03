@@ -26,7 +26,7 @@ import { config } from './config';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {animate: false}),
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
     AngularFirestoreModule
