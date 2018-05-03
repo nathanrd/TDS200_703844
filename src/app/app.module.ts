@@ -11,12 +11,16 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ProfilePage } from '../pages/profile/profile';
+import { AddPage } from '../pages/add/add'; 
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { config } from './config';
+import { DataProvider } from '../providers/data/data';
 
 @NgModule({
   declarations: [
@@ -26,10 +30,12 @@ import { config } from './config';
     LoginPage,
     SignupPage,
     TabsPage,
-    ProfilePage
+    ProfilePage,
+    AddPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
@@ -43,12 +49,14 @@ import { config } from './config';
     LoginPage,
     SignupPage,
     TabsPage,
-    ProfilePage
+    ProfilePage,
+    AddPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataProvider
   ]
 })
 export class AppModule {}

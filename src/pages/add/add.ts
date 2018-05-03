@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { ProfilePage } from '../profile/profile'
-import { AddPage } from '../add/add';
 
 /**
- * Generated class for the TabsPage page.
+ * Generated class for the AddPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,19 +10,16 @@ import { AddPage } from '../add/add';
 
 @IonicPage()
 @Component({
-  selector: 'page-tabs',
-  templateUrl: 'tabs.html',
+  selector: 'page-add',
+  templateUrl: 'add.html',
 })
-export class TabsPage {
+export class AddPage {
 
-  tab1Root = HomePage;
-  tab2Root = AddPage;
-  tab3Root = ProfilePage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
+    console.log('ionViewDidLoad AddPage');
   }
 
 }
