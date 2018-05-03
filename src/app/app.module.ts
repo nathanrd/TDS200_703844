@@ -8,7 +8,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup'
+import { SignupPage } from '../pages/signup/signup';
+import { TabsPage } from '../pages/tabs/tabs';
+import { ProfilePage } from '../pages/profile/profile';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -22,11 +24,13 @@ import { config } from './config';
     HomePage,
     WelcomePage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    TabsPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, {animate: false}),
+    IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
     AngularFirestoreModule
@@ -37,7 +41,9 @@ import { config } from './config';
     HomePage,
     WelcomePage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    TabsPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

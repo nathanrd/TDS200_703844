@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +19,7 @@ export class MyApp {
     af.app.auth().onAuthStateChanged(
       (user) => {
         if (user) {
-          this.rootPage = HomePage;
+          this.rootPage = TabsPage;
         } else {
           this.rootPage = WelcomePage;
         }
