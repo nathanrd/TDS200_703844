@@ -28,17 +28,14 @@ export class SignupPage {
     password: ''
   };
 
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    private af: AngularFirestore, 
-    private toast: ToastController,
-    private afAuth: AngularFireAuth,
-    private afDb: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private af: AngularFirestore, 
+    private toast: ToastController, private afAuth: AngularFireAuth, private afDb: AngularFireDatabase) {
     af.firestore.settings({ timestampsInSnapshots: true })
   }
 
+  //Register user method.
   registerUser() {
+    //Creates account with the EmailAndPassword solution.
     this.af.app.auth().createUserWithEmailAndPassword(this.user.email, this.user.password)
       .then(response => {
         let profile = {
@@ -46,6 +43,7 @@ export class SignupPage {
           firstname: this.user.firstname,
           lastname: this.user.lastname
         }
+        //Inserts custom user information by connecting it to the uid from auth.
         this.afAuth.authState.subscribe(auth => {
            let collection = this.af.collection<any>('users');
            collection.add({

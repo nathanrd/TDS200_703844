@@ -22,6 +22,9 @@ export class ProfilePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private af: AngularFirestore,
   private afAuth: AngularFireAuth) {
+    af.firestore.settings({ timestampsInSnapshots: true })
+
+    //Checks what user is logged in and inserts details into user observable.
     afAuth.authState.subscribe(auth => {
       this.collection = af.collection<any>('users', (ref) => {
       return ref.where('uid', '==', auth.uid);

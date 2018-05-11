@@ -14,6 +14,7 @@ export class BooksProvider {
     //console.log('Hello BooksProvider Provider');
   }
 
+  //Will implement this provider in the next version of the app.
   getBooks(search: string) {
     let url = `https://www.googleapis.com/books/v1/volumes?q=${search}`;
     return new Promise((resolve, reject) => {

@@ -9,6 +9,7 @@ import { AngularFireStorage} from 'angularfire2/storage';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { PlacesProvider } from '../../providers/places/places';
 import { Geolocation } from '@ionic-native/geolocation';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 /**
  * Generated class for the AddPage page.
@@ -33,30 +34,31 @@ export class AddPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,
   private imageProvider: ImageProvider, private data: DatabaseProvider, private af: AngularFirestore, 
   private storage: AngularFireStorage, private afAuth: AngularFireAuth, private places: PlacesProvider,
-  private geolocation: Geolocation) {
+  private geolocation: Geolocation, private toast: ToastController) {
+
+    af.firestore.settings({ timestampsInSnapshots: true })
+    //Checks what user this is and prints out user details.
     this.afAuth.authState.subscribe(auth => {
-
-    this.collection = af.collection<any>('users', (ref) => {
-      return ref.where('uid', '==', auth.uid);
-    });
-    this.user = this.collection.valueChanges();
-    console.log(this.user);
-    });
-
-    console.log(this.placeAddress);
-      this.form = formBuilder.group({
-        username: [''],
-        firstname: [''],
-        lastname: [''],
-        title: ['', Validators.required],
-        author: ['', Validators.required],
-        image: ['', Validators.required],
-        category: ['', Validators.required],
-        department: ['', Validators.required],
-        description: ['', Validators.required]
+      this.collection = af.collection<any>('users', (ref) => {
+        return ref.where('uid', '==', auth.uid);
       });
+      this.user = this.collection.valueChanges();
+    });
+    //Setting up the form layout.
+    this.form = formBuilder.group({
+      username: [''],
+      firstname: [''],
+      lastname: [''],
+      title: ['', Validators.required],
+      author: ['', Validators.required],
+      image: ['', Validators.required],
+      category: ['', Validators.required],
+      department: ['', Validators.required],
+      description: ['', Validators.required]
+    });
   }
 
+  //Take photo method
   takePhoto() {
     this.imageProvider.takePhoto()
     .then((data) => {
@@ -64,11 +66,19 @@ export class AddPage {
     })
   }
 
+  //Save post method
   savePost() {
     let form = this.form.getRawValue();
     this.data.addPost(form);
+    this.toast.create({
+      message: "Post was successfully uploaded",
+      duration: 2000
+    }).present();
+    this.navCtrl.push('HomePage');
+
   }
 
+  //Get geolocation, will insert this method in the next iteration.
   getGeoLocation() {
     this.geolocation.getCurrentPosition({enableHighAccuracy: false})
     .then(location => {

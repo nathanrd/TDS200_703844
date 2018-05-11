@@ -28,11 +28,12 @@ export class LoginPage {
     private toast: ToastController) {
   }
 
+  //Login method.
   loginUser() {
     this.af.app.auth().signInWithEmailAndPassword(this.user.email, this.user.password)
       .then(response => {
         console.log(response);
-        this.navCtrl.setRoot('GenerateProfilePage');
+        this.navCtrl.setRoot('TabsPage');
       })
       .catch(error => {
         this.toast.create({

@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content padding class="content">
+  <!-- Finds all posts objects and loops through each one of them -->
   <ion-card *ngFor="let post of posts | async">
     <ion-item>
       <h2>{{post.post.username}}</h2>

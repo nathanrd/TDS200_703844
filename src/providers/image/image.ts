@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Pipe, PipeTransform } from '@angular/core';
+import { Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AngularFireStorage} from 'angularfire2/storage';
@@ -18,7 +18,7 @@ export class ImageProvider{
   public cameraImage: String;
 
   constructor(public http: HttpClient, private camera: Camera, private storage: AngularFireStorage) {
-    //console.log('Hello ImageProvider Provider');
+    console.log('Hello ImageProvider Provider');
   }
 
   takePhoto() : Promise<any>
@@ -26,7 +26,6 @@ export class ImageProvider{
     return new Promise(resolve => 
     {
       //Camera Options
-
       let options: CameraOptions = {
         quality: 50,
         targetHeight: 640,
@@ -37,6 +36,7 @@ export class ImageProvider{
         correctOrientation: true
       };
 
+      //Gets camera image
       this.camera.getPicture(options)
       .then((data) => {
         this.cameraImage = `data:image/jpeg;base64,${data}`;

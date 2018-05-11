@@ -14,7 +14,9 @@
 
 
 <ion-content class="content" padding>
+  <!-- Setting up form -->
   <form [formGroup]="form" (ngSubmit)="savePost()">
+    <!-- Goes through the user observable -->
     <div *ngFor="let use of user | async">
     <ion-input type="hidden" [formControl]="form.controls['username']" value="{{use.username}}"></ion-input>
     <ion-input type="hidden" [formControl]="form.controls['firstname']" value="{{use.firstname}}"></ion-input>
@@ -31,10 +33,12 @@
         </ion-input>
       </ion-item>
     <ion-item>
+        <!-- Takes a photo and puts photo name inside postImage variable -->
          <span color="danger" (click)="takePhoto()">Select an image</span>
          <input type="hidden" [formControl]="form.controls['image']" [(ngModel)]="postImage">
          <img [src]="postImage">
     </ion-item>
+        <!-- The value gets inserted inside form -->
         <ion-list [formControl]="form.controls['category']" radio-group>
           <ion-list-header>Form For Handel</ion-list-header>
             <ion-item>
@@ -88,7 +92,8 @@
               placeholder="Vennligst skriv kontaktinformasjon og din pris på boken her..">
                 </ion-textarea>
           </ion-item>
-          <button ion-button clear icon-only type="submit" [disabled]="!form.valid">
+          <!-- Button is disabled if form is not valid. -->
+          <button ion-button clear icon-only type="submit" [disabled]="!form.valid" text-left>
               <ion-icon name="add-circle"></ion-icon>
           </button>
   </form>

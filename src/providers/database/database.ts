@@ -23,12 +23,7 @@ export class DatabaseProvider {
     //console.log('Hello DatabaseProvider Provider');
   }
 
-  showAllPosts() : Observable<any> {
-    return new Observable(observer => {
-      this.collection = this.af.collection<any>('posts');
-    })
-  }
-
+  //Add post method
   addPost(post) : Promise<any> {
     return new Promise((resolve) => {
       this.collection = this.af.collection<any>('posts');
@@ -37,8 +32,8 @@ export class DatabaseProvider {
     });
   }
 
+  //Upload image to firebaseStorage.
   uploadImage(imageString) : Promise<any> {
-
     let imageName : string = `book-${new Date().getTime()}.jpg`;
     return new Promise((resolve, reject) => {
     let task = this.storage
@@ -46,23 +41,9 @@ export class DatabaseProvider {
       .putString(imageString, 'base64', { contentType: 'image/jpg' });
 
     let uploadEvent = task.downloadURL();
-
     uploadEvent.subscribe((uploadedImageUrl) => {
       resolve(uploadedImageUrl);
     })
     }); 
-  }
-
-  generateProfile(username, firstname, lastname, uid) {
-    return new Promise((resolve, reject) => {
-      this.af.collection<any>('profile');
-      this.collection.add({
-        uid: uid,
-        username: username,
-        firstname: firstname,
-        lastname: lastname
-      })
-      resolve(true);
-    })
   }
 }
