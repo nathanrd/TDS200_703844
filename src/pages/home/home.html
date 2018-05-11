@@ -5,4 +5,17 @@
 </ion-header>
 
 <ion-content padding class="content">
+  <ion-card *ngFor="let post of posts | async">
+    <img src="{{post.post.image}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{post.post.title}}
+      </ion-card-title>
+      <p>
+        Form for handel: {{post.post.category}} <br>
+        Avdeling: {{post.post.department}} <br>
+        {{post.post.description}}
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

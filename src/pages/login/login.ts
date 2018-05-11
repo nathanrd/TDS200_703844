@@ -32,6 +32,7 @@ export class LoginPage {
     this.af.app.auth().signInWithEmailAndPassword(this.user.email, this.user.password)
       .then(response => {
         console.log(response);
+        this.navCtrl.setRoot('GenerateProfilePage');
       })
       .catch(error => {
         this.toast.create({

@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Camera } from '@ionic-native/camera';
 
 //Pages
 import { MyApp } from './app.component';
@@ -18,6 +19,8 @@ import { AddPage } from '../pages/add/add';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 //Providers and API
 import { BooksProvider } from '../providers/books/books';
@@ -25,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 //Firebase access
 import { config } from './config';
+import { DatabaseProvider } from '../providers/database/database';
+import { ImageProvider } from '../providers/image/image';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,9 @@ import { config } from './config';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -60,7 +67,10 @@ import { config } from './config';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BooksProvider
+    Camera,
+    BooksProvider,
+    DatabaseProvider,
+    ImageProvider
   ]
 })
 export class AppModule {}

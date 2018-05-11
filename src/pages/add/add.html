@@ -14,5 +14,71 @@
 
 
 <ion-content class="content" padding>
-  
+  <form [formGroup]="form" (ngSubmit)="savePost()">
+    <ion-item>
+      <ion-label stacked>Bok tittel:</ion-label>
+      <ion-input [formControl]="form.controls['title']" type="text">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+         <span color="danger" (click)="takePhoto()">Select an image</span>
+         <input type="hidden" [formControl]="form.controls['image']" [(ngModel)]="postImage">
+         <img [src]="postImage">
+    </ion-item>
+        <ion-list [formControl]="form.controls['category']" radio-group>
+          <ion-list-header>Form For Handel</ion-list-header>
+            <ion-item>
+              <ion-label>Selger</ion-label>
+              <ion-radio value="Selger" checked></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Ønskes kjøpt</ion-label>
+              <ion-radio value="Ønskes kjøpt"></ion-radio>
+            </ion-item>
+        </ion-list>
+
+        <ion-list [formControl]="form.controls['department']" radio-group>
+          <ion-list-header>Velg Avdeling</ion-list-header>
+            <ion-item>
+              <ion-label>Markedsføring og innovasjon</ion-label>
+              <ion-radio value="Markedsføring og innovasjon" checked></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Ledelse og HR</ion-label>
+              <ion-radio value="Ledelse og HR"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>Helse</ion-label>
+                <ion-radio value="Helse"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Teknologi</ion-label>
+                <ion-radio value="Teknologi"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Design og kommunikasjon</ion-label>
+                <ion-radio value="Design og kommunikasjon"></ion-radio>
+              </ion-item>
+
+            <ion-item>
+                <ion-label>Film og medier</ion-label>
+                <ion-radio value="Film og medier"></ion-radio>
+              </ion-item>
+
+            <ion-item>
+                <ion-label>Musikk og scene</ion-label>
+                <ion-radio value="Musikk og scene"></ion-radio>
+              </ion-item>
+          </ion-list>
+          <ion-item>
+              <ion-label stacked>Informasjon</ion-label>
+              <ion-textarea [formControl]="form.controls['description']" rows="6">
+                </ion-textarea>
+          </ion-item>
+          <button ion-button clear icon-only type="submit" [disabled]="!form.valid">
+              <ion-icon name="add-circle"></ion-icon>
+          </button>
+  </form>
 </ion-content>

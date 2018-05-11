@@ -6,9 +6,9 @@
 -->
 <ion-header no-shadow>
 
-    <ion-navbar transparent>
-    </ion-navbar>
-  
+  <ion-navbar transparent>
+  </ion-navbar>
+
 </ion-header>
 <div class="background-image"></div>
 <ion-content padding class="content">
@@ -30,7 +30,22 @@
         <ion-list>
 
           <ion-item>
-            <ion-label>Username</ion-label>
+            <ion-label>Brukernavn</ion-label>
+            <ion-input type="text" [(ngModel)]="user.username"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Fornavn</ion-label>
+            <ion-input type="text" [(ngModel)]="user.firstname"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Etternavn</ion-label>
+            <ion-input type="text" [(ngModel)]="user.lastname"></ion-input>
+          </ion-item>
+          <ion-item>
+
+            <ion-label>Email</ion-label>
             <ion-input type="text" [(ngModel)]="user.email"></ion-input>
           </ion-item>
 

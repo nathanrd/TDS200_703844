@@ -11,7 +11,21 @@ import { Injectable } from '@angular/core';
 export class BooksProvider {
 
   constructor(public http: HttpClient) {
-    console.log('Hello BooksProvider Provider');
+    //console.log('Hello BooksProvider Provider');
+  }
+
+  getBooks(search: string) {
+    let url = `https://www.googleapis.com/books/v1/volumes?q=${search}`;
+    return new Promise((resolve, reject) => {
+      this.http.get(url).subscribe(
+        (response) => {
+
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
   }
 
 }
