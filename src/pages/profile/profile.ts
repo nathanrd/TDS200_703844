@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFirestore } from 'angularfire2/firestore';
-
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from "rxjs/Observable";
+import { AngularFireAuth } from 'angularfire2/auth';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -16,7 +17,17 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private af: AngularFirestore) {
+  public collection: AngularFirestoreCollection<any>;
+  public user: Observable<any[]>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private af: AngularFirestore,
+  private afAuth: AngularFireAuth) {
+    afAuth.authState.subscribe(auth => {
+      this.collection = af.collection<any>('users', (ref) => {
+      return ref.where('uid', '==', auth.uid);
+    });
+      this.user = this.collection.valueChanges();
+    })
   }
 
   ionViewDidLoad() {

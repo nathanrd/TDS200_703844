@@ -35,6 +35,7 @@ export class SignupPage {
     private toast: ToastController,
     private afAuth: AngularFireAuth,
     private afDb: AngularFireDatabase) {
+    af.firestore.settings({ timestampsInSnapshots: true })
   }
 
   registerUser() {

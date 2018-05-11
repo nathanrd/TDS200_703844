@@ -15,9 +15,14 @@
 
 <ion-content class="content" padding>
   <form [formGroup]="form" (ngSubmit)="savePost()">
+    <div *ngFor="let use of user | async">
+    <ion-input type="hidden" [formControl]="form.controls['username']" value="{{use.username}}"></ion-input>
+    <ion-input type="hidden" [formControl]="form.controls['firstname']" value="{{use.firstname}}"></ion-input>
+    <ion-input type="hidden" [formControl]="form.controls['lastname']" value="{{use.lastname}}"></ion-input>
+  </div>
     <ion-item>
-      <ion-label stacked>Bok tittel:</ion-label>
-      <ion-input [formControl]="form.controls['title']" type="text">
+      <ion-label stacked>Bok tittel</ion-label>
+      <ion-input [formControl]="form.controls['title']" type="text" placeholder="tittel på boken">
       </ion-input>
     </ion-item>
     <ion-item>
@@ -74,7 +79,8 @@
           </ion-list>
           <ion-item>
               <ion-label stacked>Informasjon</ion-label>
-              <ion-textarea [formControl]="form.controls['description']" rows="6">
+              <ion-textarea [formControl]="form.controls['description']" rows="6" 
+              placeholder="Vennligst skriv kontaktinformasjon og din pris på boken her..">
                 </ion-textarea>
           </ion-item>
           <button ion-button clear icon-only type="submit" [disabled]="!form.valid">

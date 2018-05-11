@@ -30,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { config } from './config';
 import { DatabaseProvider } from '../providers/database/database';
 import { ImageProvider } from '../providers/image/image';
+import { PlacesProvider } from '../providers/places/places';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { ImageProvider } from '../providers/image/image';
     Camera,
     BooksProvider,
     DatabaseProvider,
-    ImageProvider
+    ImageProvider,
+    PlacesProvider
   ]
 })
 export class AppModule {}

@@ -14,5 +14,9 @@
 
 
 <ion-content padding>
-    <button ion-button full color="success" (click)="signOut()">Logg ut</button>
+  <ion-item *ngFor="let u of user | async" text-center>
+    <h2>{{u.firstname}} {{u.lastname}}</h2>
+    <h3>Username: {{u.username}}</h3>
+  </ion-item>
+  <button ion-button full color="success" (click)="signOut()">Logg ut</button>
 </ion-content>

@@ -4,6 +4,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { Observable } from "rxjs/Observable";
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Post } from '../../models/Post';
+import {AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'page-home',
@@ -13,7 +14,8 @@ export class HomePage {
   public collection: AngularFirestoreCollection<any>;
   public posts: Observable<any[]>;
 
-  constructor(public navCtrl: NavController, private data: DatabaseProvider, private af: AngularFirestore) {
+  constructor(public navCtrl: NavController, private data: DatabaseProvider, private af: AngularFirestore,
+  private afAuth: AngularFireAuth) {
     af.firestore.settings({ timestampsInSnapshots: true })
 
     this.collection = this.af.collection<any>('posts');

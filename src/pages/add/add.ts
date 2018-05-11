@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { ImageProvider } from '../../providers/image/image';
 import { DatabaseProvider } from '../../providers/database/database';
 import { AngularFireStorage} from 'angularfire2/storage';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 /**
  * Generated class for the AddPage page.
@@ -23,17 +24,30 @@ export class AddPage {
 
   private form: FormGroup;
   public postImage : any;
+  public collection: AngularFirestoreCollection<any>;
+  public user: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,
-  private imageProvider: ImageProvider, private data: DatabaseProvider, af: AngularFirestore, 
-  private storage: AngularFireStorage) {
+  private imageProvider: ImageProvider, private data: DatabaseProvider, private af: AngularFirestore, 
+  private storage: AngularFireStorage, private afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe(auth => {
+
+    this.collection = af.collection<any>('users', (ref) => {
+      return ref.where('uid', '==', auth.uid);
+    });
+    this.user = this.collection.valueChanges();
+    console.log(this.user);
+    });
       this.form = formBuilder.group({
+        username: [''],
+        firstname: [''],
+        lastname: [''],
         title: ['', Validators.required],
         image: ['', Validators.required],
         category: ['', Validators.required],
         department: ['', Validators.required],
         description: ['', Validators.required]
-     });
+      });
   }
 
   takePhoto() {
