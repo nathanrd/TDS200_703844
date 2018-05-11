@@ -4,13 +4,6 @@ import { HomePage } from '../home/home';
 import { ProfilePage } from '../profile/profile'
 import { AddPage } from '../add/add';
 
-/**
- * Generated class for the TabsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-tabs',

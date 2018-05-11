@@ -5,12 +5,6 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 import { DatabaseProvider } from '../../providers/database/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({

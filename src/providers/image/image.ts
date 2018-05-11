@@ -18,7 +18,6 @@ export class ImageProvider{
   public cameraImage: String;
 
   constructor(public http: HttpClient, private camera: Camera, private storage: AngularFireStorage) {
-    console.log('Hello ImageProvider Provider');
   }
 
   takePhoto() : Promise<any>

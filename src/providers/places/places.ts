@@ -14,8 +14,9 @@ export class PlacesProvider {
 
   
   constructor(public http: HttpClient, private geolocation: Geolocation) {
-    console.log('Hello PlacesProvider Provider');
   }
+
+  //Implementing this in the next version of app.
   getLocation(lat, lng) {
     let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=true&key=${config.apiKey}`;
     return new Promise((resolve, reject) => {

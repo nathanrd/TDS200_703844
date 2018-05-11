@@ -6,12 +6,6 @@ import { Observable } from "rxjs/Observable";
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
 
-/*
-  Generated class for the DatabaseProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class DatabaseProvider {
 
@@ -20,7 +14,6 @@ export class DatabaseProvider {
 
 
   constructor(public http: HttpClient, private af: AngularFirestore, private storage: AngularFireStorage) {
-    //console.log('Hello DatabaseProvider Provider');
   }
 
   //Add post method

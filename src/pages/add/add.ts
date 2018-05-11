@@ -11,13 +11,6 @@ import { PlacesProvider } from '../../providers/places/places';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
-/**
- * Generated class for the AddPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-add',
