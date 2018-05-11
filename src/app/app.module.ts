@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Camera } from '@ionic-native/camera';
+import { Geolocation } from '@ionic-native/geolocation';
 
 //Pages
 import { MyApp } from './app.component';
@@ -25,13 +26,13 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 //Providers and API
 import { BooksProvider } from '../providers/books/books';
 import { HttpClientModule } from '@angular/common/http';
-
-//Firebase access
-import { config } from './config';
 import { DatabaseProvider } from '../providers/database/database';
 import { ImageProvider } from '../providers/image/image';
 import { PlacesProvider } from '../providers/places/places';
 
+
+//Firebase access
+import { config } from './config';
 @NgModule({
   declarations: [
     MyApp,
@@ -69,6 +70,7 @@ import { PlacesProvider } from '../providers/places/places';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
+    Geolocation,
     BooksProvider,
     DatabaseProvider,
     ImageProvider,

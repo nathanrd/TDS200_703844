@@ -19,12 +19,17 @@
     <ion-input type="hidden" [formControl]="form.controls['username']" value="{{use.username}}"></ion-input>
     <ion-input type="hidden" [formControl]="form.controls['firstname']" value="{{use.firstname}}"></ion-input>
     <ion-input type="hidden" [formControl]="form.controls['lastname']" value="{{use.lastname}}"></ion-input>
-  </div>
+    </div>
     <ion-item>
-      <ion-label stacked>Bok tittel</ion-label>
-      <ion-input [formControl]="form.controls['title']" type="text" placeholder="tittel på boken">
+      <ion-label stacked>Bok tittel:</ion-label>
+      <ion-input [formControl]="form.controls['title']" type="text" placeholder="Skriv tittel her...">
       </ion-input>
     </ion-item>
+    <ion-item>
+        <ion-label stacked>Forfatter:</ion-label>
+        <ion-input [formControl]="form.controls['author']" type="text" placeholder="Skriv forfatter her...">
+        </ion-input>
+      </ion-item>
     <ion-item>
          <span color="danger" (click)="takePhoto()">Select an image</span>
          <input type="hidden" [formControl]="form.controls['image']" [(ngModel)]="postImage">
